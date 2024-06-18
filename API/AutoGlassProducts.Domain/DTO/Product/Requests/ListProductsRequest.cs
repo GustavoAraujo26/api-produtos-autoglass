@@ -1,4 +1,5 @@
-﻿using ArchitectureTools.Period;
+﻿using ArchitectureTools.Pagination;
+using ArchitectureTools.Period;
 using ArchitectureTools.Responses;
 using AutoGlassProducts.Domain.DTO.Product.Responses;
 using AutoGlassProducts.Domain.Enums;
@@ -16,6 +17,7 @@ namespace AutoGlassProducts.Domain.DTO.Product.Requests
     /// <param name="SupplierDescriptionTrack">Trecho de descrição do fornecedor para pesquisa</param>
     /// <param name="SupplierDocumentTrack">Trecho do documento para pesquisa</param>
     /// <param name="SupplierStatus">Status do fornecedor</param>
+    /// <param name="Page">Dados de paginação</param>
     public record ListProductsRequest(
         string? DescriptionTrack,
         Status? ProductStatus,
@@ -23,7 +25,8 @@ namespace AutoGlassProducts.Domain.DTO.Product.Requests
         PeriodRange? ExpirationPeriod,
         string? SupplierDescriptionTrack,
         string? SupplierDocumentTrack,
-        Status? SupplierStatus
+        Status? SupplierStatus,
+        Page Page
         ) : IRequest<ActionResponse<ListProductResponse>>
     {
     }

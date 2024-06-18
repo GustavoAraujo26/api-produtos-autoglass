@@ -1,9 +1,10 @@
-﻿using ArchitectureTools.Pagination;
-using ArchitectureTools.Period;
+﻿using ArchitectureTools.Period;
 using ArchitectureTools.Responses;
 using AutoGlassProducts.Domain.DTO.Product.Responses;
 using AutoGlassProducts.Domain.Enums;
+using AutoGlassProducts.Domain.Validations.Product;
 using MediatR;
+using System.Linq;
 
 namespace AutoGlassProducts.Domain.DTO.Product.Requests
 {
@@ -17,7 +18,8 @@ namespace AutoGlassProducts.Domain.DTO.Product.Requests
     /// <param name="SupplierDescriptionTrack">Trecho de descrição do fornecedor para pesquisa</param>
     /// <param name="SupplierDocumentTrack">Trecho do documento para pesquisa</param>
     /// <param name="SupplierStatus">Status do fornecedor</param>
-    /// <param name="Page">Dados de paginação</param>
+    /// <param name="Page">Página selecionada</param>
+    /// <param name="PageSize">Tamanho da página</param>
     public record ListProductsRequest(
         string? DescriptionTrack,
         Status? ProductStatus,
@@ -26,8 +28,22 @@ namespace AutoGlassProducts.Domain.DTO.Product.Requests
         string? SupplierDescriptionTrack,
         string? SupplierDocumentTrack,
         Status? SupplierStatus,
-        Page Page
+        int Page,
+        int PageSize
         ) : IRequest<ActionResponse<ListProductResponse>>
     {
+        /// <summary>
+        /// Realiza validações nas propriedades
+        /// </summary>
+        /// <returns>Container-resposta de ações</returns>
+        public ActionResponse<object> Validate()
+        {
+            var validator = new ListProductsRequestValidator();
+            var validationResponse = validator.Validate(this);
+            if (validationResponse.IsValid)
+                return ActionResponse<object>.Ok();
+
+            return ActionResponse<object>.UnprocessableEntity(validationResponse.Errors.Select(x => x.ErrorMessage).ToList());
+        }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using ArchitectureTools.Responses;
-using AutoGlassProducts.Domain.DTO.Product.Responses;
+using AutoGlassProducts.Domain.DTO.Supplier.Responses;
 using AutoGlassProducts.Domain.Validations.Supplier;
 using MediatR;
 using System.Linq;
@@ -14,7 +14,7 @@ namespace AutoGlassProducts.Domain.DTO.Supplier.Requests
     public record CreateSupplierRequest(
         string Document,
         string Description
-        ) : IRequest<ActionResponse<ProductResponse>>
+        ) : IRequest<ActionResponse<SupplierResponse>>
     {
         /// <summary>
         /// Realiza validações nas propriedades

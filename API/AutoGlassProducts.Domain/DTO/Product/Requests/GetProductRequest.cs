@@ -1,5 +1,6 @@
 ﻿using ArchitectureTools.Responses;
 using AutoGlassProducts.Domain.Validations.Product;
+using MediatR;
 using System.Linq;
 
 namespace AutoGlassProducts.Domain.DTO.Product.Requests
@@ -10,7 +11,7 @@ namespace AutoGlassProducts.Domain.DTO.Product.Requests
     /// <param name="Id">Código</param>
     public record GetProductRequest(
         int Id
-        )
+        ) : IRequest<ActionResponse<ProductDTO>>
     {
         /// <summary>
         /// Realiza validações nas propriedades

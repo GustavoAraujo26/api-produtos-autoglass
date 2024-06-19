@@ -23,7 +23,7 @@ namespace AutoGlassProducts.Domain.Repositories
         /// </summary>
         /// <param name="id">Código</param>
         /// <returns>Entidade fornecedor</returns>
-        Task<Supplier> Get(int id);
+        Task<Supplier?> Get(int id);
 
         /// <summary>
         /// Obtém lista paginada de fornecedores, com base nos dados de pesquisa

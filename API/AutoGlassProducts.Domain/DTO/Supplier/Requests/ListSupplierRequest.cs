@@ -1,6 +1,8 @@
 ﻿using ArchitectureTools.Responses;
+using AutoGlassProducts.Domain.DTO.Supplier.Responses;
 using AutoGlassProducts.Domain.Enums;
 using AutoGlassProducts.Domain.Validations.Supplier;
+using MediatR;
 using System.Linq;
 
 namespace AutoGlassProducts.Domain.DTO.Supplier.Requests
@@ -19,7 +21,7 @@ namespace AutoGlassProducts.Domain.DTO.Supplier.Requests
         Status? Status,
         int Page,
         int PageSize
-        )
+        ) : IRequest<ActionResponse<ListSupplierResponse>>
     {
         /// <summary>
         /// Realiza validações nas propriedades

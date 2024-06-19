@@ -10,4 +10,8 @@
     <PackageReference Include="MediatR" Version="12.3.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\AutoGlassProducts.Domain\AutoGlassProducts.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

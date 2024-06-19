@@ -19,7 +19,7 @@ namespace AutoGlassProducts.Domain.Repositories
         /// </summary>
         /// <param name="id">Código</param>
         /// <returns>Entidade produto</returns>
-        Task<Product> Get(int id);
+        Task<Product?> Get(int id);
 
         /// <summary>
         /// Obtém lista paginada de produtos, com base em parâmetros de pesquisa

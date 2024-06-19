@@ -12,7 +12,7 @@ namespace AutoGlassProducts.Domain.DTO.Supplier.Requests
     /// <param name="Id">Código</param>
     public record DeleteSupplierRequest(
         int Id
-        ) : IRequest<SupplierResponse>
+        ) : IRequest<ActionResponse<SupplierResponse>>
     {
         /// <summary>
         /// Realiza validações nas propriedades

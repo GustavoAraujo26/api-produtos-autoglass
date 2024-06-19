@@ -1,5 +1,5 @@
-﻿using AutoGlassProducts.Domain.Handlers.Product;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Scrutor;
 using System.Reflection;
 
 namespace AutoGlassProducts.Handlers.Extensions
@@ -17,8 +17,9 @@ namespace AutoGlassProducts.Handlers.Extensions
         {
             services.Scan(scan =>
             {
-                scan.FromAssembliesOf(typeof(ICreateProductHandler))
-                .AddClasses(classes => classes.Where(x => x.Name.EndsWith("Handler")))
+                scan.FromApplicationDependencies()
+                .AddClasses(classes => classes.InNamespaces("AutoGlassProducts.Handlers.Contracts"))
+                .UsingRegistrationStrategy(RegistrationStrategy.Skip)
                 .AsImplementedInterfaces()
                 .WithTransientLifetime();
             });

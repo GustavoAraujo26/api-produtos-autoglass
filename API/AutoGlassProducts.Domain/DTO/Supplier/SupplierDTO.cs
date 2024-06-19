@@ -8,11 +8,11 @@ namespace AutoGlassProducts.Domain.DTO.Supplier
     /// <param name="Id">Código</param>
     /// <param name="Document">Documento (CNPJ)</param>
     /// <param name="Description">Descrição</param>
-    /// <param name="Status">Status</param>
+    /// <param name="Situation">Situação</param>
     public record SupplierDTO(
         int Id,
         string Document,
         string Description,
-        EnumData Status
+        EnumData Situation
         );
 }

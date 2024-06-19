@@ -3,9 +3,9 @@
 namespace AutoGlassProducts.Domain.Enums
 {
     /// <summary>
-    /// Status da entidade/modelo
+    /// Situação da entidade/modelo
     /// </summary>
-    public enum Status
+    public enum Situation
     {
         /// <summary>
         /// Habilitado

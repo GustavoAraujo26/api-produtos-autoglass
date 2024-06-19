@@ -12,22 +12,22 @@ namespace AutoGlassProducts.Domain.DTO.Product.Requests
     /// DTO de requisição de listagem de produtos
     /// </summary>
     /// <param name="DescriptionTrack">Trecho de descrição para pesquisa</param>
-    /// <param name="ProductStatus">Status do produto</param>
+    /// <param name="ProductSituation">Situação do produto</param>
     /// <param name="MadePeriod">Período de fabricação</param>
     /// <param name="ExpirationPeriod">Período de validade</param>
     /// <param name="SupplierDescriptionTrack">Trecho de descrição do fornecedor para pesquisa</param>
     /// <param name="SupplierDocumentTrack">Trecho do documento para pesquisa</param>
-    /// <param name="SupplierStatus">Status do fornecedor</param>
+    /// <param name="SupplierSituation">Situação do fornecedor</param>
     /// <param name="Page">Página selecionada</param>
     /// <param name="PageSize">Tamanho da página</param>
     public record ListProductsRequest(
         string? DescriptionTrack,
-        Status? ProductStatus,
+        Situation? ProductSituation,
         PeriodRange? MadePeriod,
         PeriodRange? ExpirationPeriod,
         string? SupplierDescriptionTrack,
         string? SupplierDocumentTrack,
-        Status? SupplierStatus,
+        Situation? SupplierSituation,
         int Page,
         int PageSize
         ) : IRequest<ActionResponse<ListProductResponse>>

@@ -14,16 +14,16 @@ namespace AutoGlassProducts.Domain.Models
         /// <param name="id">Código</param>
         /// <param name="supplierId">Código do fornecedor</param>
         /// <param name="description">Descrição</param>
-        /// <param name="status">Status</param>
+        /// <param name="situation">Situação</param>
         /// <param name="madeOn">Data de fabricação</param>
         /// <param name="expiresAt">Data de validade</param>
         public ProductModel(int id, int supplierId, string description, 
-            Status status, DateTime madeOn, DateTime expiresAt)
+            Situation situation, DateTime madeOn, DateTime expiresAt)
         {
             Id = id;
             SupplierId = supplierId;
             Description = description;
-            Status = status;
+            Situation = situation;
             MadeOn = madeOn;
             ExpiresAt = expiresAt;
         }
@@ -44,9 +44,9 @@ namespace AutoGlassProducts.Domain.Models
         public string Description { get; private set; }
 
         /// <summary>
-        /// Status
+        /// Situação
         /// </summary>
-        public Status Status { get; private set; }
+        public Situation Situation { get; private set; }
 
         /// <summary>
         /// Data de fabricação

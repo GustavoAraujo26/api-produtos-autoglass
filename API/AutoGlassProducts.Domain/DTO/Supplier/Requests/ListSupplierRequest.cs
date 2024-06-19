@@ -12,13 +12,13 @@ namespace AutoGlassProducts.Domain.DTO.Supplier.Requests
     /// </summary>
     /// <param name="DescriptionTrack">Trecho de descrição para pesquisa</param>
     /// <param name="DocumentTrack">Trecho de documento (CNPJ) para pesquisa</param>
-    /// <param name="Status">Status</param>
+    /// <param name="Situation">Situação</param>
     /// <param name="Page">Página atual</param>
     /// <param name="PageSize">Tamanho da página</param>
     public record ListSupplierRequest(
         string? DescriptionTrack,
         string? DocumentTrack,
-        Status? Status,
+        Situation? Situation,
         int Page,
         int PageSize
         ) : IRequest<ActionResponse<ListSupplierResponse>>

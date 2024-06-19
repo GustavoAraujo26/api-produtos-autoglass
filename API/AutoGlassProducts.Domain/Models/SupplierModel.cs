@@ -13,13 +13,13 @@ namespace AutoGlassProducts.Domain.Models
         /// <param name="id">Código</param>
         /// <param name="document">Documento identificador (CNPJ)</param>
         /// <param name="description">Descrição</param>
-        /// <param name="status">Status</param>
-        public SupplierModel(int id, string document, string description, Status status)
+        /// <param name="situation">Situação</param>
+        public SupplierModel(int id, string document, string description, Situation situation)
         {
             Id = id;
             Document = document;
             Description = description;
-            Status = status;
+            Situation = situation;
         }
 
         /// <summary>
@@ -38,8 +38,8 @@ namespace AutoGlassProducts.Domain.Models
         public string Description { get; private set; }
 
         /// <summary>
-        /// Status
+        /// Situação
         /// </summary>
-        public Status Status { get; private set; }
+        public Situation Situation { get; private set; }
     }
 }

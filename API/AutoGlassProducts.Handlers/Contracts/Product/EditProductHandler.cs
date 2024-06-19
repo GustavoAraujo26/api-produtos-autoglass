@@ -46,7 +46,7 @@ namespace AutoGlassProducts.Handlers.Contracts.Product
 
             if (currentProduct.Supplier.Id != request.SupplierId)
             {
-                if (selectedSupplier.Status == Status.Disabled)
+                if (selectedSupplier.Situation == Situation.Disabled)
                     return ActionResponse<ProductResponse>.BadRequest("Cannot associate product to disabled supplier!");
 
                 updatedProduct.AddSupplier(selectedSupplier);

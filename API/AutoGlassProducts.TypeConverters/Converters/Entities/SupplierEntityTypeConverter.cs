@@ -9,7 +9,7 @@ namespace AutoGlassProducts.TypeConverters.Converters.Entities
     internal class SupplierModelToEntityTypeConverter : ITypeConverter<SupplierModel, Supplier>
     {
         public Supplier Convert(SupplierModel source, Supplier destination, ResolutionContext context) =>
-            new Supplier(source.Document, source.Description, source.Status, source.Id);
+            new Supplier(source.Document, source.Description, source.Situation, source.Id);
     }
 
     internal class SupplierCreationToEntityTypeConverter : ITypeConverter<CreateSupplierRequest, Supplier>

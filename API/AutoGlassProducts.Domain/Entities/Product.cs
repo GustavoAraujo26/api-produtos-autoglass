@@ -12,17 +12,17 @@ namespace AutoGlassProducts.Domain.Entities
         /// Construtor para inicializar as propriedades
         /// </summary>
         /// <param name="description">Descrição</param>
-        /// <param name="status">Status</param>
+        /// <param name="situation">Situação</param>
         /// <param name="madeOn">Data de fabricação</param>
         /// <param name="expiresAt">Data de validade</param>
         /// <param name="id">Código</param>
         /// <param name="supplier">Fornecedor</param>
-        public Product(string description, Status status, 
+        public Product(string description, Situation situation, 
             DateTime madeOn, DateTime expiresAt, int id = 0, Supplier? supplier = null)
         {
             Id = id;
             Description = description;
-            Status = status;
+            Situation = situation;
             MadeOn = madeOn;
             ExpiresAt = expiresAt;
 
@@ -41,9 +41,9 @@ namespace AutoGlassProducts.Domain.Entities
         public string Description { get; private set; }
 
         /// <summary>
-        /// Status
+        /// Situação
         /// </summary>
-        public Status Status { get; private set; }
+        public Situation Situation { get; private set; }
 
         /// <summary>
         /// Data de fabricação
@@ -68,7 +68,7 @@ namespace AutoGlassProducts.Domain.Entities
         /// <param name="expiresAt">Data de validade</param>
         /// <returns>Dados do produto</returns>
         public static Product Create(string description, DateTime madeOn, DateTime expiresAt) =>
-            new Product(description, Status.Enabled, madeOn, expiresAt);
+            new Product(description, Situation.Enabled, madeOn, expiresAt);
 
         /// <summary>
         /// Realiza cópia dos dados do produto
@@ -76,7 +76,7 @@ namespace AutoGlassProducts.Domain.Entities
         /// <param name="product">Dados do produto a ser copiado</param>
         /// <returns>Dados do novo produto</returns>
         public static Product Copy(Product product) => 
-            new Product(product.Description, product.Status, product.MadeOn, 
+            new Product(product.Description, product.Situation, product.MadeOn, 
                 product.ExpiresAt, product.Id, Supplier.Copy(product.Supplier));
 
         /// <summary>
@@ -89,12 +89,12 @@ namespace AutoGlassProducts.Domain.Entities
         /// <summary>
         /// Habilita o produto
         /// </summary>
-        public void Enable() => Status = Status.Enabled;
+        public void Enable() => Situation = Situation.Enabled;
 
         /// <summary>
         /// Desabilita o produto
         /// </summary>
-        public void Disable() => Status = Status.Disabled;
+        public void Disable() => Situation = Situation.Disabled;
 
         /// <summary>
         /// Atualiza dados básicos

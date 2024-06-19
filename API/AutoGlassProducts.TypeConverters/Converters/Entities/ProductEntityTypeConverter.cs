@@ -9,7 +9,7 @@ namespace AutoGlassProducts.TypeConverters.Converters.Entities
     internal class ProductModelToEntityConverter : ITypeConverter<ProductModel, Product>
     {
         public Product Convert(ProductModel source, Product destination, ResolutionContext context) =>
-            new Product(source.Description, source.Status, source.MadeOn, source.ExpiresAt, source.Id);
+            new Product(source.Description, source.Situation, source.MadeOn, source.ExpiresAt, source.Id);
     }
 
     internal class ProductCreationRequestToEntityConverter : ITypeConverter<CreateProductRequest, Product>

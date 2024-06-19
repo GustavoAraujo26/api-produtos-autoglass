@@ -12,7 +12,7 @@ namespace AutoGlassProducts.TypeConverters.Converters.DTO
         {
             var supplier = context.Mapper.Map<SupplierDTO>(source.Supplier);
 
-            return new ProductDTO(source.Id, source.Description, source.Status.GetData(), 
+            return new ProductDTO(source.Id, source.Description, source.Situation.GetData(), 
                 source.MadeOn, source.ExpiresAt, supplier);
         }
     }

@@ -1,9 +1,6 @@
 ﻿using ArchitectureTools.Responses;
 using Asp.Versioning;
 using AutoGlassProducts.Api.Controllers.Base;
-using AutoGlassProducts.Domain.DTO.Product.Requests;
-using AutoGlassProducts.Domain.DTO.Product.Responses;
-using AutoGlassProducts.Domain.DTO.Product;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -17,7 +14,7 @@ namespace AutoGlassProducts.Api.Controllers
     /// <summary>
     /// Controlador de fornecedores
     /// </summary>
-    [ApiVersion("1.0")]
+    [ApiVersion("2.0")]
     [Route("api/v{version:apiVersion}/supplier")]
     [ApiController]
     [SwaggerTag("Ações de manipulação de fornecedores")]

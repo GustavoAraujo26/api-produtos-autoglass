@@ -9,14 +9,14 @@ namespace AutoGlassProducts.Domain.DTO.Product
     /// </summary>
     /// <param name="Id">Código</param>
     /// <param name="Description">Descrição</param>
-    /// <param name="Status">Status</param>
+    /// <param name="Situation">Situação</param>
     /// <param name="MadeOn">Data de fabricação</param>
     /// <param name="ExpiresAt">Data de validade</param>
     /// <param name="Supplier">Fornecedor</param>
     public record ProductDTO(
         int Id,
         string Description,
-        EnumData Status,
+        EnumData Situation,
         DateTime MadeOn,
         DateTime ExpiresAt,
         SupplierDTO Supplier

@@ -12,9 +12,9 @@ namespace AutoGlassProducts.Domain.Entities
         /// </summary>
         /// <param name="document">Documento identificador (CNPJ)</param>
         /// <param name="description">Descrição</param>
-        /// <param name="status">Status</param>
+        /// <param name="situation">Situação</param>
         /// <param name="id">Código</param>
-        public Supplier(string document, string description, Status status, int id = 0)
+        public Supplier(string document, string description, Situation situation, int id = 0)
         {
             Id = id;
             Document = document;
@@ -37,9 +37,9 @@ namespace AutoGlassProducts.Domain.Entities
         public string Description { get; private set; }
 
         /// <summary>
-        /// Status
+        /// Situação
         /// </summary>
-        public Status Status { get; private set; }
+        public Situation Situation { get; private set; }
 
         /// <summary>
         /// Cria novo fornecedor
@@ -48,7 +48,7 @@ namespace AutoGlassProducts.Domain.Entities
         /// <param name="desciption">Descrição</param>
         /// <returns>Dados do fornecedor</returns>
         public static Supplier Create(string document, string desciption) =>
-            new Supplier(document, desciption, Status.Enabled, 0);
+            new Supplier(document, desciption, Situation.Enabled, 0);
 
         /// <summary>
         /// Realiza cópia dos dados do fornecedor
@@ -56,17 +56,17 @@ namespace AutoGlassProducts.Domain.Entities
         /// <param name="supplier">Fornecedor a ser copiado</param>
         /// <returns>Dados do novo fornecedor</returns>
         public static Supplier Copy(Supplier supplier) =>
-            new Supplier(supplier.Document, supplier.Description, supplier.Status, supplier.Id);
+            new Supplier(supplier.Document, supplier.Description, supplier.Situation, supplier.Id);
 
         /// <summary>
         /// Habilita fornecedor
         /// </summary>
-        public void Enable() => Status = Status.Enabled;
+        public void Enable() => Situation = Situation.Enabled;
 
         /// <summary>
         /// Desabilita fornecedor
         /// </summary>
-        public void Disable() => Status = Status.Disabled;
+        public void Disable() => Situation = Situation.Disabled;
 
         /// <summary>
         /// Atualiza dados básicos

@@ -10,11 +10,11 @@ namespace AutoGlassProducts.Domain.Entities
         /// <summary>
         /// Construtor para inicializar as propriedades
         /// </summary>
-        /// <param name="id">Código</param>
         /// <param name="document">Documento identificador (CNPJ)</param>
         /// <param name="description">Descrição</param>
         /// <param name="status">Status</param>
-        public Supplier(int id, string document, string description, Status status)
+        /// <param name="id">Código</param>
+        public Supplier(string document, string description, Status status, int id = 0)
         {
             Id = id;
             Document = document;
@@ -48,7 +48,15 @@ namespace AutoGlassProducts.Domain.Entities
         /// <param name="desciption">Descrição</param>
         /// <returns>Dados do fornecedor</returns>
         public static Supplier Create(string document, string desciption) =>
-            new Supplier(0, document, desciption, Status.Enabled);
+            new Supplier(document, desciption, Status.Enabled, 0);
+
+        /// <summary>
+        /// Realiza cópia dos dados do fornecedor
+        /// </summary>
+        /// <param name="supplier">Fornecedor a ser copiado</param>
+        /// <returns>Dados do novo fornecedor</returns>
+        public static Supplier Copy(Supplier supplier) =>
+            new Supplier(supplier.Document, supplier.Description, supplier.Status, supplier.Id);
 
         /// <summary>
         /// Habilita fornecedor
@@ -59,5 +67,16 @@ namespace AutoGlassProducts.Domain.Entities
         /// Desabilita fornecedor
         /// </summary>
         public void Disable() => Status = Status.Disabled;
+
+        /// <summary>
+        /// Atualiza dados básicos
+        /// </summary>
+        /// <param name="document">Documento (CNPJ)</param>
+        /// <param name="description">Descrição</param>
+        public void UpdateBasicData(string document, string description)
+        {
+            Document = document;
+            Description = description;
+        }
     }
 }

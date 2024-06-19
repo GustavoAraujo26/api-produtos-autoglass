@@ -11,14 +11,14 @@ namespace AutoGlassProducts.Domain.Entities
         /// <summary>
         /// Construtor para inicializar as propriedades
         /// </summary>
-        /// <param name="id">Código</param>
         /// <param name="description">Descrição</param>
         /// <param name="status">Status</param>
         /// <param name="madeOn">Data de fabricação</param>
         /// <param name="expiresAt">Data de validade</param>
+        /// <param name="id">Código</param>
         /// <param name="supplier">Fornecedor</param>
-        public Product(int id, string description, Status status, 
-            DateTime madeOn, DateTime expiresAt, Supplier? supplier = null)
+        public Product(string description, Status status, 
+            DateTime madeOn, DateTime expiresAt, int id = 0, Supplier? supplier = null)
         {
             Id = id;
             Description = description;
@@ -68,7 +68,16 @@ namespace AutoGlassProducts.Domain.Entities
         /// <param name="expiresAt">Data de validade</param>
         /// <returns>Dados do produto</returns>
         public static Product Create(string description, DateTime madeOn, DateTime expiresAt) =>
-            new Product(0, description, Status.Enabled, madeOn, expiresAt);
+            new Product(description, Status.Enabled, madeOn, expiresAt);
+
+        /// <summary>
+        /// Realiza cópia dos dados do produto
+        /// </summary>
+        /// <param name="product">Dados do produto a ser copiado</param>
+        /// <returns>Dados do novo produto</returns>
+        public static Product Copy(Product product) => 
+            new Product(product.Description, product.Status, product.MadeOn, 
+                product.ExpiresAt, product.Id, Supplier.Copy(product.Supplier));
 
         /// <summary>
         /// Adiciona novo fornecedor
@@ -86,5 +95,18 @@ namespace AutoGlassProducts.Domain.Entities
         /// Desabilita o produto
         /// </summary>
         public void Disable() => Status = Status.Disabled;
+
+        /// <summary>
+        /// Atualiza dados básicos
+        /// </summary>
+        /// <param name="description">Descrição</param>
+        /// <param name="madeOn">Data de fabricação</param>
+        /// <param name="expiresAt">Data de validade</param>
+        public void UpdateBasicData(string description, DateTime madeOn, DateTime expiresAt)
+        {
+            Description = description;
+            MadeOn = madeOn;
+            ExpiresAt = expiresAt;
+        }
     }
 }

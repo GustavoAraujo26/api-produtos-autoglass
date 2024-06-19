@@ -7,7 +7,7 @@ namespace AutoGlassProducts.Tests.FakeData.Product.Request
 {
     internal static class EditProductRequestFakeData
     {
-        internal static EditProductRequest BuildValid()
+        internal static EditProductRequest BuildValid(int? supplierId = null)
         {
             var autoFaker = new AutoFaker<EditProductRequest>();
 
@@ -15,7 +15,12 @@ namespace AutoGlassProducts.Tests.FakeData.Product.Request
             autoFaker.RuleFor(x => x.Description, y => y.Commerce.ProductName().Truncate(200));
             autoFaker.RuleFor(x => x.MadeOn, y => DateTime.Now);
             autoFaker.RuleFor(x => x.ExpiresAt, y => DateTime.Now.AddDays(5));
-            autoFaker.RuleFor(x => x.SupplierId, y => y.Random.Number(1, 1000000));
+
+            if (supplierId.HasValue && supplierId.Value != 0)
+                autoFaker.RuleFor(x => x.SupplierId, y => supplierId.Value);
+            else
+                autoFaker.RuleFor(x => x.SupplierId, y => y.Random.Number(1, 1000000));
+
 
             return autoFaker.Generate();
         }

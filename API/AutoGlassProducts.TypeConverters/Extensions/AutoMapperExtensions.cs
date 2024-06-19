@@ -14,7 +14,7 @@ namespace AutoGlassProducts.TypeConverters.Extensions
         /// <param name="services">Interface da coleção de serviços</param>
         public static void ConfigureAutoMapper(this IServiceCollection services)
         {
-            services.AddAutoMapper(typeof(EntityProfile), typeof(ModelProfile));
+            services.AddAutoMapper(typeof(EntityProfile), typeof(ModelProfile), typeof(DtoProfile));
         }
     }
 }

@@ -2,10 +2,7 @@
 using AutoGlassProducts.Domain.DTO.Product.Requests;
 using AutoGlassProducts.Domain.DTO.Product.Responses;
 using AutoGlassProducts.Domain.Handlers.Product;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using AutoGlassProducts.Domain.Repositories;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -13,9 +10,31 @@ namespace AutoGlassProducts.Handlers.Contracts.Product
 {
     internal class DeleteProductHandler : IDeleteProductHandler
     {
-        public Task<ActionResponse<ProductResponse>> Handle(DeleteProductRequest request, CancellationToken cancellationToken)
+        private readonly IProductRepository _repository;
+
+        public DeleteProductHandler(IProductRepository repository)
         {
-            throw new NotImplementedException();
+            _repository = repository;
+        }
+
+        public async Task<ActionResponse<ProductResponse>> Handle(DeleteProductRequest request, CancellationToken cancellationToken)
+        {
+            if (request is null)
+                return ActionResponse<ProductResponse>.BadRequest("Null request");
+
+            var validationResponse = request.Validate();
+            if (validationResponse.IsFailure)
+                return ActionResponse<ProductResponse>.Copy(validationResponse);
+
+            var currentProduct = await _repository.Get(request.Id);
+            if (currentProduct is null)
+                return ActionResponse<ProductResponse>.NotFound($"Product {request.Id} not found!");
+
+            currentProduct.Disable();
+
+            var saveResponse = await _repository.Save(currentProduct);
+
+            return ActionResponse<ProductResponse>.Ok(saveResponse);
         }
     }
 }

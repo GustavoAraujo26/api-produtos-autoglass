@@ -1,4 +1,5 @@
 ﻿using ArchitectureTools.Responses;
+using AutoGlassProducts.Domain.DTO.Product;
 using AutoGlassProducts.Domain.DTO.Supplier;
 using AutoGlassProducts.Domain.DTO.Supplier.Requests;
 using AutoGlassProducts.Domain.Handlers.Supplier;
@@ -30,6 +31,8 @@ namespace AutoGlassProducts.Handlers.Contracts.Supplier
                 return ActionResponse<SupplierDTO>.Copy(validationResponse);
 
             var currentSupplier = await _repository.Get(request.Id);
+            if (currentSupplier is null)
+                return ActionResponse<SupplierDTO>.NotFound($"Supplier {request.Id} not found!");
 
             var dto = _mapper.Map<SupplierDTO>(currentSupplier);
 

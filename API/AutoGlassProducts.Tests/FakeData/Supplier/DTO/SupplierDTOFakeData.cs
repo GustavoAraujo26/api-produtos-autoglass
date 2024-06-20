@@ -2,7 +2,7 @@
 using AutoBogus;
 using AutoGlassProducts.Domain.DTO.Supplier;
 using AutoGlassProducts.Domain.Enums;
-using AutoGlassProducts.Domain.Extensions;
+using ArchitectureTools.Extensions;
 using System.Collections.Generic;
 
 namespace AutoGlassProducts.Tests.FakeData.Supplier.DTO

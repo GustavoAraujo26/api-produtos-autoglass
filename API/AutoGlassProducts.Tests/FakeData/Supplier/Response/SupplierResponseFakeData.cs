@@ -1,5 +1,5 @@
 ﻿using AutoBogus;
-using AutoGlassProducts.Domain.Extensions;
+using ArchitectureTools.Extensions;
 using AutoGlassProducts.Domain.DTO.Supplier.Responses;
 
 namespace AutoGlassProducts.Tests.FakeData.Supplier.Response

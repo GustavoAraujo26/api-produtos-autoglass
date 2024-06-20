@@ -1,6 +1,6 @@
 ﻿using AutoBogus;
 using AutoGlassProducts.Domain.DTO.Product;
-using AutoGlassProducts.Domain.Extensions;
+using ArchitectureTools.Extensions;
 using AutoGlassProducts.Tests.FakeData.Supplier.DTO;
 using System;
 using System.Collections.Generic;

@@ -1,5 +1,5 @@
 ﻿using AutoBogus;
-using AutoGlassProducts.Domain.Extensions;
+using ArchitectureTools.Extensions;
 using AutoGlassProducts.Tests.FakeData.Supplier.Entity;
 using System;
 

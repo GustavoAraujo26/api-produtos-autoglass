@@ -1,6 +1,6 @@
 ﻿using AutoBogus;
 using AutoGlassProducts.Domain.DTO.Supplier.Requests;
-using AutoGlassProducts.Domain.Extensions;
+using ArchitectureTools.Extensions;
 
 namespace AutoGlassProducts.Tests.FakeData.Supplier.Request
 {

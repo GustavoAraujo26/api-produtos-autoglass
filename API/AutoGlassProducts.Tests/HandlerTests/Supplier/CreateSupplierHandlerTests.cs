@@ -12,12 +12,12 @@ namespace AutoGlassProducts.Tests.HandlerTests.Supplier
 {
     public class CreateSupplierHandlerTests
     {
-        private readonly Mock<ISupplierRepository> _SupplierRepositoryMock;
+        private readonly Mock<ISupplierRepository> _supplierRepositoryMock;
         private readonly CancellationTokenSource _cts;
 
         public CreateSupplierHandlerTests()
         {
-            _SupplierRepositoryMock = new Mock<ISupplierRepository>();
+            _supplierRepositoryMock = new Mock<ISupplierRepository>();
             _cts = new CancellationTokenSource();
         }
 
@@ -27,10 +27,10 @@ namespace AutoGlassProducts.Tests.HandlerTests.Supplier
             //Arrange
             var serviceCollection = TestEnvironment.BuildEnvironment();
 
-            _SupplierRepositoryMock.Setup(x => x.Save(It.IsAny<Domain.Entities.Supplier>()))
+            _supplierRepositoryMock.Setup(x => x.Save(It.IsAny<Domain.Entities.Supplier>()))
                 .ReturnsAsync(SupplierResponseFakeData.Build());
 
-            serviceCollection.AddTransient(x => _SupplierRepositoryMock.Object);
+            serviceCollection.AddTransient(x => _supplierRepositoryMock.Object);
 
             var request = CreateSupplierRequestFakeData.BuildValid();
 
@@ -50,10 +50,10 @@ namespace AutoGlassProducts.Tests.HandlerTests.Supplier
             //Arrange
             var serviceCollection = TestEnvironment.BuildEnvironment();
 
-            _SupplierRepositoryMock.Setup(x => x.Save(It.IsAny<Domain.Entities.Supplier>()))
+            _supplierRepositoryMock.Setup(x => x.Save(It.IsAny<Domain.Entities.Supplier>()))
                 .ReturnsAsync(SupplierResponseFakeData.Build());
 
-            serviceCollection.AddTransient(x => _SupplierRepositoryMock.Object);
+            serviceCollection.AddTransient(x => _supplierRepositoryMock.Object);
 
             var handler = serviceCollection.GetService<ICreateSupplierHandler>();
 
@@ -71,10 +71,10 @@ namespace AutoGlassProducts.Tests.HandlerTests.Supplier
             //Arrange
             var serviceCollection = TestEnvironment.BuildEnvironment();
 
-            _SupplierRepositoryMock.Setup(x => x.Save(It.IsAny<Domain.Entities.Supplier>()))
+            _supplierRepositoryMock.Setup(x => x.Save(It.IsAny<Domain.Entities.Supplier>()))
                 .ReturnsAsync(SupplierResponseFakeData.Build());
 
-            serviceCollection.AddTransient(x => _SupplierRepositoryMock.Object);
+            serviceCollection.AddTransient(x => _supplierRepositoryMock.Object);
 
             var request = CreateSupplierRequestFakeData.BuildInvalid();
 

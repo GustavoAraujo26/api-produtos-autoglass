@@ -24,10 +24,22 @@ namespace AutoGlassProducts.Api.Controllers
         /// <param name="repository">Interface do repositório de configuração do banco de dados</param>
         /// <returns>Container-resposta</returns>
         [HttpPost]
-        [Route("database-initialization")]
+        [Route("database/initialization")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ActionResponse<object>))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ActionResponse<object>))]
-        public async Task<ActionResult> Get([FromServices] IDatabaseConfigurationRepository repository) =>
+        public async Task<ActionResult> InitializeDatabase([FromServices] IDatabaseConfigurationRepository repository) =>
             BuildResponse(await repository.Configure());
+
+        /// <summary>
+        /// Verifica se o banco de dados está totalmente configurado
+        /// </summary>
+        /// <param name="repository">Interface do repositório de configuração do banco de dados</param>
+        /// <returns>Container-resposta</returns>
+        [HttpGet]
+        [Route("database/check")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ActionResponse<object>))]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ActionResponse<object>))]
+        public async Task<ActionResult> CheckDatabase([FromServices] IDatabaseConfigurationRepository repository) =>
+            BuildResponse(await repository.CheckConfiguration());
     }
 }

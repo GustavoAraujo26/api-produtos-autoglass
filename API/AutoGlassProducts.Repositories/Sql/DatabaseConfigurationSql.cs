@@ -60,9 +60,5 @@
             )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
             ) ON [PRIMARY]
         ";
-
-        public const string CheckIfForeignKeyExists = @"
-            SELECT COUNT(*) FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_product_supplier]') AND parent_object_id = OBJECT_ID(N'[dbo].[product]')
-        ";
     }
 }

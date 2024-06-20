@@ -31,10 +31,6 @@ namespace AutoGlassProducts.Repositories.Contracts
                     int? productTableExists = await db.QueryFirstOrDefaultAsync<int?>(DatabaseConfigurationSql.CheckIfProductTableExists);
                     if (!productTableExists.HasValue || (productTableExists.HasValue && productTableExists.Value == 0))
                         return ActionResponse<object>.NotFound("Product table not found!");
-
-                    int? foreignKeyExists = await db.QueryFirstOrDefaultAsync<int?>(DatabaseConfigurationSql.CheckIfForeignKeyExists);
-                    if (!foreignKeyExists.HasValue || (foreignKeyExists.HasValue && foreignKeyExists.Value == 0))
-                        return ActionResponse<object>.NotFound("Foreign key not found!");
                 }
 
                 return ActionResponse<object>.Ok();
@@ -77,12 +73,7 @@ namespace AutoGlassProducts.Repositories.Contracts
                     {
                         //Criando tabela de produtos
                         await db.ExecuteAsync(DatabaseConfigurationSql.CreateProductTable);
-                    }
 
-                    //Verifica se a chave estrangeira existe
-                    int? foreignKeyExists = await db.QueryFirstOrDefaultAsync<int?>(DatabaseConfigurationSql.CheckIfForeignKeyExists);
-                    if (!foreignKeyExists.HasValue || (foreignKeyExists.HasValue && foreignKeyExists.Value == 0))
-                    {
                         //Criando chave estrangeira de fornecedores com produtos
                         await db.ExecuteAsync(DatabaseConfigurationSql.CreateForeignKeySupplierOnProductTable);
                     }

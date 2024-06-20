@@ -16,6 +16,7 @@ using Asp.Versioning.ApiExplorer;
 using Serilog;
 using AutoGlassProducts.Api.Middlewares;
 using AutoGlassProducts.Repositories.Extensions;
+using AutoGlassProducts.Api.HostedServices;
 
 namespace AutoGlassProducts.Api
 {
@@ -53,6 +54,8 @@ namespace AutoGlassProducts.Api
             {
                 options.SuppressModelStateInvalidFilter = true;
             });
+
+            services.AddHostedService<DatabaseConfigurationHostedService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

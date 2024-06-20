@@ -4,6 +4,8 @@
 
 API de gestão de produtos criada em .NET 5 seguindo as regras propostas no desafio prático de programação da Autoglass.
 
+Na pasta [VideoApresentacao](https://github.com/GustavoAraujo26/api-produtos-autoglass/tree/master/VideoApresentacao) consta video com explicação da arquitetura e execução do projeto em si.
+
 Sobre as entidades, a aplicação possui 2 principais: "Produto" e "Fornecedor", sendo que o segundo está atrelado ao primeiro. 
 
 Sobre os recursos disponíveis:

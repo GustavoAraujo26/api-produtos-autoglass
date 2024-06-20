@@ -6,7 +6,7 @@
       "launchUrl": "",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "CONNECTION_STRING": ""
+        "CONNECTION_STRING": "Server=localhost,1433;User ID=sa;Password=1q2w3e4r@#$"
       }
     },
     "AutoGlassProducts.Api": {
@@ -15,7 +15,7 @@
       "launchUrl": "",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "CONNECTION_STRING": ""
+        "CONNECTION_STRING": "Server=localhost,1433;User ID=sa;Password=1q2w3e4r@#$"
       },
       "dotnetRunMessages": "true",
       "applicationUrl": "https://localhost:5001;http://localhost:5000"
@@ -26,7 +26,7 @@
       "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
       "environmentVariables": {
         "ASPNETCORE_URLS": "https://+:443;http://+:80",
-        "CONNECTION_STRING": ""
+        "CONNECTION_STRING": "Server=localhost,1433;User ID=sa;Password=1q2w3e4r@#$"
       },
       "publishAllPorts": true,
       "useSSL": true

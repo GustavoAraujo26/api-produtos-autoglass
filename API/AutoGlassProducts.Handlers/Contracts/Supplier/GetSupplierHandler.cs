@@ -1,5 +1,4 @@
 ﻿using ArchitectureTools.Responses;
-using AutoGlassProducts.Domain.DTO.Product;
 using AutoGlassProducts.Domain.DTO.Supplier;
 using AutoGlassProducts.Domain.DTO.Supplier.Requests;
 using AutoGlassProducts.Domain.Handlers.Supplier;

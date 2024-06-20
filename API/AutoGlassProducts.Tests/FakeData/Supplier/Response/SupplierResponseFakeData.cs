@@ -6,7 +6,7 @@ namespace AutoGlassProducts.Tests.FakeData.Supplier.Response
 {
     internal static class SupplierResponseFakeData
     {
-        internal static SupplierResponse BuildValid()
+        internal static SupplierResponse Build()
         {
             var autoFaker = new AutoFaker<SupplierResponse>();
 

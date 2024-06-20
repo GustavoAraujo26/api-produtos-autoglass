@@ -23,10 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="HandlerTests\Supplier\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\AutoGlassProducts.Domain\AutoGlassProducts.Domain.csproj" />
     <ProjectReference Include="..\AutoGlassProducts.Handlers\AutoGlassProducts.Handlers.csproj" />
     <ProjectReference Include="..\AutoGlassProducts.TypeConverters\AutoGlassProducts.TypeConverters.csproj" />

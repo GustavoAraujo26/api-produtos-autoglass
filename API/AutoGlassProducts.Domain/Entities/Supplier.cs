@@ -19,6 +19,7 @@ namespace AutoGlassProducts.Domain.Entities
             Id = id;
             Document = document;
             Description = description;
+            Situation = situation;
         }
 
         /// <summary>

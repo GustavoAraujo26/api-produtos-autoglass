@@ -1,8 +1,10 @@
 ﻿using AutoGlassProducts.Domain.DTO.Product;
 using AutoGlassProducts.Domain.DTO.Supplier;
 using AutoGlassProducts.Domain.Entities;
+using AutoGlassProducts.Domain.Models;
 using AutoGlassProducts.TypeConverters.Converters.DTO;
 using AutoMapper;
+using System.Collections.Generic;
 
 namespace AutoGlassProducts.TypeConverters.Profiles
 {
@@ -15,6 +17,9 @@ namespace AutoGlassProducts.TypeConverters.Profiles
 
             CreateMap<Supplier, SupplierDTO>()
                 .ConvertUsing<SupplierDtoTypeConverter>();
+
+            CreateMap<List<SupplierModel>, List<SupplierDTO>>()
+                .ConvertUsing<SupplierModelToDtoTypeConverter>();
         }
     }
 }

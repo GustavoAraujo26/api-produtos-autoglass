@@ -29,10 +29,7 @@ namespace AutoGlassProducts.Domain.Validations.Product
             RuleFor(x => x.MadePeriod).Custom((obj, context) =>
             {
                 if (obj == null)
-                {
-                    context.AddFailure("MadePeriod invalid!");
                     return;
-                }
 
                 var validationResult = obj.Value.Validate();
                 if (validationResult.IsFailure)
@@ -42,10 +39,7 @@ namespace AutoGlassProducts.Domain.Validations.Product
             RuleFor(x => x.ExpirationPeriod).Custom((obj, context) =>
             {
                 if (obj == null)
-                {
-                    context.AddFailure("MadePeriod invalid!");
                     return;
-                }
 
                 var validationResult = obj.Value.Validate();
                 if (validationResult.IsFailure)

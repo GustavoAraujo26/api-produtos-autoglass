@@ -4,6 +4,7 @@ using AutoGlassProducts.Domain.Entities;
 using AutoGlassProducts.Domain.Models;
 using AutoGlassProducts.TypeConverters.Converters.DTO;
 using AutoMapper;
+using System;
 using System.Collections.Generic;
 
 namespace AutoGlassProducts.TypeConverters.Profiles
@@ -20,6 +21,9 @@ namespace AutoGlassProducts.TypeConverters.Profiles
 
             CreateMap<List<SupplierModel>, List<SupplierDTO>>()
                 .ConvertUsing<SupplierModelToDtoTypeConverter>();
+
+            CreateMap<List<Tuple<ProductModel, SupplierModel>>, List<ProductDTO>>()
+                .ConvertUsing<ProductModelToDtoTypeConverter>();
         }
     }
 }

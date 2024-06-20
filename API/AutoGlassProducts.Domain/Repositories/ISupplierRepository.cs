@@ -1,7 +1,8 @@
-﻿using AutoGlassProducts.Domain.DTO.Supplier;
-using AutoGlassProducts.Domain.DTO.Supplier.Requests;
+﻿using AutoGlassProducts.Domain.DTO.Supplier.Requests;
 using AutoGlassProducts.Domain.DTO.Supplier.Responses;
 using AutoGlassProducts.Domain.Entities;
+using AutoGlassProducts.Domain.Models;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace AutoGlassProducts.Domain.Repositories
@@ -31,5 +32,12 @@ namespace AutoGlassProducts.Domain.Repositories
         /// <param name="listRequest">Requisição de listagem de fornecedores</param>
         /// <returns>DTO de resposta de lista paginada</returns>
         Task<ListSupplierResponse> List(ListSupplierRequest listRequest);
+
+        /// <summary>
+        /// Obtém lista de modelos com base em uma lista de Id's
+        /// </summary>
+        /// <param name="ids">Lista de identificadores para buscar</param>
+        /// <returns>Lista de modelos</returns>
+        Task<List<SupplierModel>> ListByIds(List<int> ids);
     }
 }

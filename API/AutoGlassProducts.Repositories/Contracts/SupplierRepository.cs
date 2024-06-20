@@ -82,6 +82,19 @@ namespace AutoGlassProducts.Repositories.Contracts
             }
         }
 
+        public async Task<List<SupplierModel>> ListByIds(List<int> ids)
+        {
+            if (string.IsNullOrEmpty(_connectionString))
+                return null;
+
+            using (var db = new SqlConnection(_connectionString))
+            {
+                var modelList = await db.QueryAsync<SupplierModel>(SupplierSql.ListByIds, new { IdList = ids });
+
+                return modelList.ToList();
+            }
+        }
+
         public async Task<SupplierResponse> Save(Supplier supplier)
         {
             if (string.IsNullOrEmpty(_connectionString))

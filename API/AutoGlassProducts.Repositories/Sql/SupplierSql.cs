@@ -48,6 +48,17 @@
               FROM [dbo].[supplier]
         ";
 
+        public const string ListByIds = @"
+            USE [auto_glass_challenge]
+            
+            SELECT [id] as Id
+                  ,[supplier_document] as Document
+                  ,[description] as Description
+                  ,[situation] as Situation
+              FROM [dbo].[supplier]
+              WHERE [id] IN @IdList
+        ";
+
         public const string GetTotalRows = @"SELECT COUNT(*) FROM [auto_glass_challenge].[dbo].[supplier]";
     }
 }

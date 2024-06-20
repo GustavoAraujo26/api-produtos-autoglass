@@ -1,6 +1,7 @@
 ﻿using ArchitectureTools.Responses;
 using AutoGlassProducts.Domain.DTO.Product.Requests;
 using AutoGlassProducts.Domain.DTO.Product.Responses;
+using AutoGlassProducts.Domain.Enums;
 using AutoGlassProducts.Domain.Handlers.Product;
 using AutoGlassProducts.Domain.Repositories;
 using AutoMapper;
@@ -34,6 +35,9 @@ namespace AutoGlassProducts.Handlers.Contracts.Product
             var currentSupplier = await _supplierRepository.Get(request.SupplierId);
             if (currentSupplier is null)
                 return ActionResponse<ProductResponse>.BadRequest($"Supplier {request.SupplierId} not found!");
+
+            if (currentSupplier.Situation == Situation.Disabled)
+                return ActionResponse<ProductResponse>.BadRequest($"Supplier {request.SupplierId} disabled!");
 
             var product = _mapper.Map<Domain.Entities.Product>(request);
             product.AddSupplier(currentSupplier);
